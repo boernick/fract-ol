@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:50:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/08/18 21:53:40 by nboer            ###   ########.fr       */
+/*   Updated: 2024/08/24 14:53:53 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@
 
 void init_screen(int res_y, int res_x)
 {
-	mlx_init();
-	// check mlx_new_window(res_y, res_x);
+	void	*mlx;
+	mlx = mlx_init();
+	mlx_new_window(res_y, res_x);
 }
 
 
 int	main(void)
 {
-
+	init_screen(RES_Y, RES_X);
+	return (0);
 }

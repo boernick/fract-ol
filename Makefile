@@ -1,36 +1,37 @@
-NAME = push_swap
+NAME = fract-ol
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = push_swap.c push_swap_input.c push_swap_utils_1.c push_swap_utils_2.c push_swap_utils_3.c\
-  push_swap_actions_1.c push_swap_actions_2.c push_swap_sort.c push_swap_do_move.c\$
-    push_swap_cases.c push_swap_set_move.c
+SRCS = fractol.c
 OBJS = $(SRCS:.c=.o)
-HEADER = push_swap.h
+HEADER = fract-ol.h
 
-LIBFT_DIR = Libft
-LIBFT = $(LIBFT_DIR)/libft.a
+PRINTF_DIR = ft_printf
+PRINTF = $(PRINTF_DIR)/libftprintf.a
+LIBX_DIR = minilibx-linux
+LIBX = $(LIBX_DIR)/minilibx.a
 
-INCLUDES = -I $(LIBFT_DIR)
+INCLUDES = -I $(PRINTF_DIR)
 
-all: $(LIBFT) $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS) $(HEADER)
-        $(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) -o $(NAME)
-$
+		$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(PRINTF) $(LIBX) -o $(NAME)
+
 %.o: %.c $(HEADER)
-        $(CC) $(CFLAGS) $(INCLUDES) -g -c $< -o $@$
-$
-$(LIBFT):$
-        make -C $(LIBFT_DIR) bonus$
-$
-clean:$
-        rm -f $(OBJS)$
-        make -C $(LIBFT_DIR) clean$
-$
-fclean: clean$
-        rm -f $(NAME)$
-        make -C $(LIBFT_DIR) fclean$
-$
-re: fclean all$
-$
+		$(CC) $(CFLAGS) $(INCLUDES) -g -c $< -o $@
+
+$(LIBFT):
+	make -C $(LIBFT_DIR) bonus
+
+$(LIBX):
+	make -C $(LIBX_DIR)
+
+clean:
+		rm -f $(OBJS)
+
+fclean: clean
+		rm -f $(NAME)
+
+re: fclean all
+
 .PHONY: all clean fclean re
