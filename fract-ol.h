@@ -6,14 +6,30 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:26:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/08/24 14:53:53 by nboer            ###   ########.fr       */
+/*   Updated: 2024/08/24 19:49:25 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/nboer/git/fract-ol/minilibx-linux/mlx.h"
-#include "/home/nboer/git/fract-ol/ft_printf/ft_printf.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include "/home/nboer/git/fract-ol/includes/minilibx-linux/mlx.h"
+#include "/home/nboer/git/fract-ol/includes/ft_printf/ft_printf.h"
+#include "/home/nboer/git/fract-ol/includes/Libft/libft.h"
 
-typedef struct	t_complex{
-	double	real;
-	double	i;
-}	complex;
+typedef struct	s_complex{
+	double	y; //complex
+	double	x; //real
+}	t_complex;
+
+typedef struct s_fractol
+{
+	t_complex	complex;
+	void	*mlx_win_ptr; // mlx_new_window
+	void	*mlx_ptr;  //mlx_init
+	void	*pix_ptr; // pointer to pixels
+	void	*mlx_img_ptr; //pointer to image
+
+}	t_fractol;
+
+void	ft_error(void);
+
