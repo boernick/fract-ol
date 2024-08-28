@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:26:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/08/25 16:57:30 by nick             ###   ########.fr       */
+/*   Updated: 2024/08/28 09:37:26 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ typedef struct s_fractol
 	t_complex	num;
 	void	*win_ptr; // mlx_new_window
 	void	*mlx_ptr;  //mlx_init
-	void	*pix_ptr; // pointer to pixels
+	char	*buff; // pointer to pixels
 	void	*img_ptr; //pointer to image
 	int		colour;
+	double	hypotenuse;
 	double	max_iterations;
-	
 
 }	t_fractol;
 
