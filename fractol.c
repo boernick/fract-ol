@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:50:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/08/28 09:37:29 by nick             ###   ########.fr       */
+/*   Updated: 2024/08/28 17:15:51 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,41 +48,45 @@ t_complex	sum_com(t_complex z1, t_complex z2)
 
 double	hypotenuse(double a, double b)
 {
-	return (square_root(sum(square(a), square(b))));
+	return (square_root(sum_com(square_com(a), square_com(b))));
 }
+
 void	fractol_calc_pix(int x, int y, t_fractol *frac)
 {
-	ft_printf("calculating mandelbrot...");
-	t_complex	z;
 	t_complex	w;
 	int	i;
+	ft_printf("calculating mandelbrot...");
 
-	//first iteration
-	z.x = 0;
-	z.y = 0;
-
-	w.x = remap(x, -2, 2, 0, RES_X)
+	w.x = remap(x, -2, 2, 0, RES_X);
 	w.y = remap(x, 2, -2, 0, RES_Y);
-	// voor elke pixel moet ik checken of hij binnen of buiten de hypotenuse valt.
-	// wat is hij? de oplossing van de mandelbrot formule voor een specifiek punt in de grafiek waarin (x,y) = (real number, complex number)
-	// totdat de waarde van hypotenuse groter dan 2 wordt, ga kan als "binnen" de fractol gekleurd worden 
-	frac = sum_com(square_com(z), w);
-
-	while(i < MAX_ITERATION)
-
-	while (hypotenuse(frac->num.y, frac->num.x) < 2)
-		//	roep de calculation aan
-
-
-// dit hier beneden loopt door alle pixel in het scherm, hierboven moet gebeuren per pixel
-	while (frac->num.y < RES_Y)
+	while (i < MAX_ITERATION)
 	{
-		frac->num.y++;
-		while (frac->num.x < RES_X)
+		frac->num = sum_com(square_com(frac->num), w);
+		if (hypotenuse(frac->num.y, frac->num.x) < frac->hypotenuse)
+			mlx_pixel_put(frac->mlx_ptr, frac->win_ptr, x, y, 0x000000);
+		else
+			mlx_pixel_put(frac->mlx_ptr, frac->win_ptr, x, y, 0xFFFFFF);
+		i++;
+	}
+}
+
+void	render_screen(t_fractol *frac)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (j < RES_Y)
+	{
+		j++;
+		while (i < RES_X)
 		{
-			//calculate mandelbrot;
+			fractol_calc_pix(i, j, &frac);
 			//calculate colour based on iterations;
-			frac->num.x++;
+			frac->num.x = 0;
+			frac->num.y = 0;
+			i++;
 		}
 	}
 
@@ -99,15 +103,12 @@ void	fractol_init(int res_y, int res_x, t_fractol *frac)
 	if (frac->win_ptr == NULL)
 		ft_error();
 	frac->img_ptr = mlx_new_image(frac->mlx_ptr, RES_Y, RES_X);
-	
 	// eendimensionale array met alle coordinaten met mlx functie aanroepen
 	frac->buff = mlx_get_data_addr(frac->img_ptr, &pixel_bits, &line_bytes, &endian);
 	frac->hypotenuse = 4; // 2 x 2 
 	frac->max_iterations = 40;
-
-	
 	// per pixel in de mandelbrot functie aanroepen en dan kleur toewijzen op basis van het aantal iteraties
-	fractol_calc();
+	render_screen(&frac);
 	// mlx_put_image_to_window();
 }
 
