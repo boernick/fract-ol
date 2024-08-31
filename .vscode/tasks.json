@@ -3,11 +3,18 @@
         {
             "type": "cppbuild",
             "label": "C/C++: gcc build active file",
-            "command": "/usr/bin/gcc",
+            "command": "/usr/bin/cc",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "*.c",
+				"includes/Libft/*.c",
+				"includes/ft_printf/*.c",
+				"-Lincludes/minilibx-linux",
+				"-lmlx",
+				"-lX11",
+				"-lXext",
+				"-lm",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],

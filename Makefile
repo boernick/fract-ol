@@ -1,7 +1,7 @@
 NAME = fract-ol
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = fractol.c fractol_utils.c
+SRCS = fractol.c fractol_utils.c fractol_math.c
 OBJS = $(SRCS:.c=.o)
 HEADER = fract-ol.h
 
@@ -24,10 +24,10 @@ $(NAME): $(OBJS) $(PRINTF) $(LIBFT) $(LIBX)
 %.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) $(INCLUDES) -g -c $< -o $@
 
-$(LIBFT):
+$(LIBFT): 
 	make -C $(LIBFT_DIR) bonus
 
-$(PRINTF):
+$(PRINTF): $(LIBFT)
 	make -C $(PRINTF_DIR)
 
 $(LIBX):
@@ -42,7 +42,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	make -C $(PRINTF_DIR) fclean
-	make -C $(LIBX_DIR) fclean
+	make -C $(LIBX_DIR) clean
 	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
