@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:33:36 by nboer             #+#    #+#             */
-/*   Updated: 2024/08/31 19:53:16 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/01 15:37:30 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 double	remap(double num, double new_min, double new_max, 
 	double old_max)
 {
-	return ((new_max - new_min) * (num - 0) / (old_max - 0) + new_min);
-
+	return (new_max - new_min) * (num - 0) / (old_max - 0) + new_min;
 }
 
 t_complex	sum_com(t_complex c1, t_complex c2)
@@ -36,7 +35,7 @@ t_complex	square_com(t_complex c)
 {
 	t_complex	res;
 
-	res.x = (c.x * c.x) - (c.y - c.y);
+	res.x = (c.x * c.x) - (c.y * c.y);
 	res.y = 2 * c.x * c.y;
 	return (res);
 }
