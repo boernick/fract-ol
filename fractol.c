@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:50:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/01 15:29:11 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/01 18:49:35 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,16 @@ static void	fractol_calc_pix(int x, int y, t_fractol *frac)
 	int			color;
 
 	i = 0;
-
 	z.x = 0.0;
 	z.y = 0.0;
-
 	c.x = remap(x, -2, 2, RES_X);
 	c.y = remap(y, 2, -2, RES_Y);
-
-	while (i < frac->max_iterations)
+	while (i < MAX_ITERATIONS)
 	{
 		z = sum_com(square_com(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > frac->max_hypotenuse)
 		{
-			color = remap(i, WHITE, BLACK, frac->max_iterations);
+			color = remap(i, WHITE, BLACK, MAX_ITERATIONS);
 			my_pixel_put(x, y, frac, color);
 			return ;
 		}
@@ -94,13 +91,11 @@ void	fractol_init(t_fractol *frac)
 	frac->buff = mlx_get_data_addr(frac->img_ptr, &frac->pixel_bits,
 			&frac->line_len, &frac->endian);
 	frac->max_hypotenuse = 4;
-	frac->max_iterations = 100;
 	frac->shift_x = 0.0;
 	frac->shift_y = 0.0;
 }
 
-#include <stdio.h>
-int	main(int argc, char **argv) // CHECK INPUTS! IT WORKS SOMEHOW WITH ./frac-tol mandelb
+int	main(int argc, char **argv)
 {
 	t_fractol	frac;
 
@@ -108,9 +103,13 @@ int	main(int argc, char **argv) // CHECK INPUTS! IT WORKS SOMEHOW WITH ./frac-to
 		ft_printf("Please enter command as: \n	- mendelbrot \n	- julia \n");
 	if (argc == 2)
 	{
-		if (!ft_strncmp(argv[1], "mandelbrot", 10))
+		if (!ft_strncmp(argv[1], "mandelbrot", 10) 
+			|| !ft_strncmp(argv[1], "julia", 5))
 		{
+			frac.name = argv[1];
+			ft_printf("Calculating %s...", frac.name);
 			fractol_init(&frac);
+			events_init(&frac);
 			render_screen(&frac);
 			mlx_loop(frac.mlx_ptr);
 		}

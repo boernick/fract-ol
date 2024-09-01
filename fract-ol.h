@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:26:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/01 15:38:54 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/01 19:13:11 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include "/home/nboer/git/fract-ol/includes/minilibx-linux/mlx.h"
 #include "/home/nboer/git/fract-ol/includes/ft_printf/ft_printf.h"
 #include "/home/nboer/git/fract-ol/includes/Libft/libft.h"
+#include <X11/X.h>
+#include <X11/keysym.h>
 
 #define BLACK             0x000000  // RGB(0, 0, 0)
 #define WHITE             0xFFFFFF  // RGB(255, 255, 255)
@@ -32,6 +34,7 @@
 
 #define RES_Y 1040
 #define RES_X 1040
+#define MAX_ITERATIONS 300
 
 typedef struct	s_complex{
 	double	y;
@@ -61,3 +64,5 @@ double		remap(double num, double new_min, double new_max,
 			double old_max);
 t_complex	square_com(t_complex c);
 t_complex	sum_com(t_complex c1, t_complex c2);
+void	events_init(t_fractol *frac);
+int	events_keyboard(t_fractol *frac);
