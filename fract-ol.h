@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:26:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/01 19:13:11 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/04 20:27:23 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,10 @@
 
 #define BLACK             0x000000  // RGB(0, 0, 0)
 #define WHITE             0xFFFFFF  // RGB(255, 255, 255)
-#define PASTEL_PINK       0xFFD1DC  // A soft pink
-#define PASTEL_BLUE       0xAEC6CF  // A gentle blue
-#define PASTEL_GREEN      0x77DD77  // A light green
-#define PASTEL_YELLOW     0xFDFD96  // A pale yellow
-#define PASTEL_PURPLE     0xCBAACB  // A delicate purple
-#define PASTEL_ORANGE     0xFFB347  // A soft orange
-#define PASTEL_PEACH      0xFFE5B4  // A light peach
-#define PASTEL_LAVENDER   0xE6E6FA  // A soft lavender
 
 #define RES_Y 1040
 #define RES_X 1040
-#define MAX_ITERATIONS 300
+#define MAX_ITERATIONS 440
 
 typedef struct	s_complex{
 	double	y;
@@ -57,12 +49,17 @@ typedef struct s_fractol
 	int			pixel_bits;
 	double		shift_x;
 	double		shift_y;
+	double		julia_x;
+	double		julia_y;
 }	t_fractol;
 
 void		ft_error(void);
 double		remap(double num, double new_min, double new_max, 
-			double old_max);
+				double old_max);
 t_complex	square_com(t_complex c);
 t_complex	sum_com(t_complex c1, t_complex c2);
-void	events_init(t_fractol *frac);
-int	events_keyboard(t_fractol *frac);
+void		events_init(t_fractol *frac);
+int			events_keyboard(int keycode, t_fractol *frac);
+double		ft_atod(const char *nptr);
+void		fractoltype(t_fractol *frac, t_complex *z, t_complex *c);
+double		check_fractional(const char *nptr, int i, double num, double fac);

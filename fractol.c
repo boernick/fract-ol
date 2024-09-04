@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:50:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/01 18:49:35 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/04 20:28:00 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,18 @@ static void	fractol_calc_pix(int x, int y, t_fractol *frac)
 	int			color;
 
 	i = 0;
-	z.x = 0.0;
-	z.y = 0.0;
-	c.x = remap(x, -2, 2, RES_X);
-	c.y = remap(y, 2, -2, RES_Y);
+	z.x = remap(x, -2, 2, RES_X);
+	z.y = remap(y, 2, -2, RES_Y);
+	fractoltype(frac, &z, &c);
 	while (i < MAX_ITERATIONS)
 	{
 		z = sum_com(square_com(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > frac->max_hypotenuse)
 		{
-			color = remap(i, WHITE, BLACK, MAX_ITERATIONS);
+			if (i < 5)
+				color = remap(5, WHITE, BLACK, MAX_ITERATIONS);
+			else
+				color = remap(i, WHITE, BLACK, MAX_ITERATIONS);
 			my_pixel_put(x, y, frac, color);
 			return ;
 		}
@@ -100,19 +102,23 @@ int	main(int argc, char **argv)
 	t_fractol	frac;
 
 	if (argc == 1)
-		ft_printf("Please enter command as: \n	- mendelbrot \n	- julia \n");
-	if (argc == 2)
+		ft_printf("Please enter command: \n	- mendelbrot \n	- julia <r> <i>\n");
+	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
+		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
-		if (!ft_strncmp(argv[1], "mandelbrot", 10) 
-			|| !ft_strncmp(argv[1], "julia", 5))
+		frac.name = argv[1];
+		ft_printf("Calculating %s...", frac.name);
+		if (!ft_strncmp(frac.name, "julia", 5))
 		{
-			frac.name = argv[1];
-			ft_printf("Calculating %s...", frac.name);
-			fractol_init(&frac);
-			events_init(&frac);
-			render_screen(&frac);
-			mlx_loop(frac.mlx_ptr);
+			frac.julia_x = (ft_atod(argv[2]));
+			frac.julia_y = (ft_atod(argv[3]));
 		}
+		fractol_init(&frac);
+		events_init(&frac);
+		render_screen(&frac);		
+		mlx_loop(frac.mlx_ptr);
+		mlx_destroy_window(frac.mlx_ptr, frac.win_ptr);
+		free(frac.mlx_ptr);
 	}
 	else
 		ft_error();

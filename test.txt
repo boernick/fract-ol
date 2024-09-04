@@ -1,0 +1,5 @@
+Iterations: 290
+Iterations: 500
+Iterations: 440
+
+make re && ./fract-ol julia -.79 .15
