@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:50:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/07 14:26:54 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/07 16:49:43 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static void	fractol_calc_pix(int x, int y, t_fractol *frac)
 	int			color;
 
 	i = 0;
-	z.x = remap(x, -2, 2, RES_X) + frac->offset_y;
-	z.y = remap(y, 2, -2, RES_Y) + frac->offset_x;
+	z.x = (remap(x, -2, 2, RES_X) * frac->zoom) + frac->offset_y;
+	z.y = (remap(y, 2, -2, RES_Y) * frac->zoom) + frac->offset_x;
 	fractoltype(frac, &z, &c);
 	while (i < frac->max_iterations)
 	{
@@ -96,6 +96,7 @@ void	fractol_init(t_fractol *frac)
 	frac->max_iterations = MAX_ITERATIONS;
 	frac->offset_x = 0;
 	frac->offset_y = 0;
+	frac->zoom = 1.0;
 }
 
 int	main(int argc, char **argv)

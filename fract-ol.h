@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:26:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/07 15:06:04 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/07 21:02:12 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 #include "/home/nboer/git/fract-ol/includes/Libft/libft.h"
 #include <X11/X.h>
 #include <X11/keysym.h>
+#include <mlx.h>
 
 #define BLACK             0x000000  // RGB(0, 0, 0)
 #define WHITE             0xFFFFFF  // RGB(255, 255, 255)
 
-#define RES_Y 1040
-#define RES_X 1040
-#define MAX_ITERATIONS 440
+#define RES_Y 1000
+#define RES_X 1000
+#define MAX_ITERATIONS 30
 
 typedef struct	s_complex{
 	double	y;
@@ -40,7 +41,6 @@ typedef struct s_fractol
 	void		*mlx_ptr; 
 	char		*buff;
 	void		*img_ptr;
-	int			colour;
 	double		max_hypotenuse;
 	int			max_iterations;
 	int			bpp;
@@ -64,5 +64,11 @@ double		ft_atod(const char *nptr);
 void		fractoltype(t_fractol *frac, t_complex *z, t_complex *c);
 double		check_fractional(const char *nptr, int i, double num, double fac);
 void		render_screen(t_fractol *frac);
-int			events_mouse(int button, int x, int y, t_fractol *frac);
 int			events_keyboard(int keycode, t_fractol *frac);
+int			handle_mods(int keycode, t_fractol *frac);
+int			handle_view(int keycode, t_fractol *frac);
+int			handle_hotspots(int keycode, t_fractol *frac);
+int			close_window(t_fractol *frac);
+int			events_mouse_press(int button, int x, int y, t_fractol *frac);
+
+
