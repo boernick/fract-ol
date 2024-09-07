@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:26:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/04 20:27:23 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/07 15:06:04 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ typedef struct s_fractol
 	int			endian;
 	int			line_len;
 	int			pixel_bits;
-	double		shift_x;
-	double		shift_y;
+	double		offset_x;
+	double		offset_y;
+	double		zoom;
 	double		julia_x;
 	double		julia_y;
 }	t_fractol;
@@ -59,7 +60,9 @@ double		remap(double num, double new_min, double new_max,
 t_complex	square_com(t_complex c);
 t_complex	sum_com(t_complex c1, t_complex c2);
 void		events_init(t_fractol *frac);
-int			events_keyboard(int keycode, t_fractol *frac);
 double		ft_atod(const char *nptr);
 void		fractoltype(t_fractol *frac, t_complex *z, t_complex *c);
 double		check_fractional(const char *nptr, int i, double num, double fac);
+void		render_screen(t_fractol *frac);
+int			events_mouse(int button, int x, int y, t_fractol *frac);
+int			events_keyboard(int keycode, t_fractol *frac);

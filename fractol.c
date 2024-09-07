@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:50:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/04 20:28:00 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/07 14:26:54 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ static void	fractol_calc_pix(int x, int y, t_fractol *frac)
 	int			color;
 
 	i = 0;
-	z.x = remap(x, -2, 2, RES_X);
-	z.y = remap(y, 2, -2, RES_Y);
+	z.x = remap(x, -2, 2, RES_X) + frac->offset_y;
+	z.y = remap(y, 2, -2, RES_Y) + frac->offset_x;
 	fractoltype(frac, &z, &c);
-	while (i < MAX_ITERATIONS)
+	while (i < frac->max_iterations)
 	{
 		z = sum_com(square_com(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > frac->max_hypotenuse)
 		{
 			if (i < 5)
-				color = remap(5, WHITE, BLACK, MAX_ITERATIONS);
+				color = remap(5, WHITE, BLACK, frac->max_iterations);
 			else
-				color = remap(i, WHITE, BLACK, MAX_ITERATIONS);
+				color = remap(i, WHITE, BLACK, frac->max_iterations);
 			my_pixel_put(x, y, frac, color);
 			return ;
 		}
@@ -93,8 +93,9 @@ void	fractol_init(t_fractol *frac)
 	frac->buff = mlx_get_data_addr(frac->img_ptr, &frac->pixel_bits,
 			&frac->line_len, &frac->endian);
 	frac->max_hypotenuse = 4;
-	frac->shift_x = 0.0;
-	frac->shift_y = 0.0;
+	frac->max_iterations = MAX_ITERATIONS;
+	frac->offset_x = 0;
+	frac->offset_y = 0;
 }
 
 int	main(int argc, char **argv)
@@ -119,6 +120,7 @@ int	main(int argc, char **argv)
 		mlx_loop(frac.mlx_ptr);
 		mlx_destroy_window(frac.mlx_ptr, frac.win_ptr);
 		free(frac.mlx_ptr);
+		exit(EXIT_SUCCESS);
 	}
 	else
 		ft_error();
