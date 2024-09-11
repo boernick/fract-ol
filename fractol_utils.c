@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 15:00:12 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/04 19:52:56 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/11 11:25:08 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,12 @@ double	ft_atod(const char *nptr)
 	}
 	num = check_fractional(nptr, i, num, factor);
 	return (is_neg * num);
+}
+
+int	close_window(t_fractol *frac)
+{
+	mlx_loop_end(frac->mlx_ptr);
+	return (0);
 }
 
 void	ft_error(void)

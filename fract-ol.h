@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:26:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/07 21:02:12 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/11 11:30:10 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int			events_keyboard(int keycode, t_fractol *frac);
 int			handle_mods(int keycode, t_fractol *frac);
 int			handle_view(int keycode, t_fractol *frac);
 int			handle_hotspots(int keycode, t_fractol *frac);
-int			close_window(t_fractol *frac);
 int			events_mouse_press(int button, int x, int y, t_fractol *frac);
-
+int			close_window(t_fractol *frac);
 

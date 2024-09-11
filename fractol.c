@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:50:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/07 16:49:43 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/11 11:38:50 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,6 @@ int	main(int argc, char **argv)
 {
 	t_fractol	frac;
 
-	if (argc == 1)
-		ft_printf("Please enter command: \n	- mendelbrot \n	- julia <r> <i>\n");
 	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
 		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
@@ -123,7 +121,7 @@ int	main(int argc, char **argv)
 		free(frac.mlx_ptr);
 		exit(EXIT_SUCCESS);
 	}
-	else
-		ft_error();
+	ft_printf("Please enter command: \n	- mendelbrot \n	- julia <r> <i>\n");
+	ft_error();
 	return (0);
 }
