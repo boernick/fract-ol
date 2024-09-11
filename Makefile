@@ -1,7 +1,7 @@
 NAME = fractol
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = fractol.c fractol_utils.c fractol_math.c fractol_events.c
+SRCS = fractol.c fractol_utils.c fractol_math.c fractol_events.c fractol_clean.c
 OBJS = $(SRCS:.c=.o)
 HEADER = fractol.h
 
