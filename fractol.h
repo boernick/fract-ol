@@ -6,12 +6,9 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:26:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/11 11:30:10 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/11 12:12:35 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// DESKTOP: /home/nick/42Berlin/fract-ol/includes/
-// PC 42: 	/home/nboer/git/fract-ol/includes/
 
 #include <unistd.h>
 #include <stdlib.h>

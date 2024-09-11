@@ -6,11 +6,11 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:33:36 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/11 11:33:23 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/11 12:13:14 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract-ol.h"
+#include "fractol.h"
 
 void	events_init(t_fractol *frac)
 {

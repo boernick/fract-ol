@@ -6,11 +6,11 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:44:50 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/11 11:33:56 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/11 12:13:14 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract-ol.h"
+#include "fractol.h"
 
 int	events_mouse_press(int button, int x, int y, t_fractol *frac)
 {

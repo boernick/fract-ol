@@ -6,11 +6,11 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:50:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/11 11:38:50 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/11 12:13:13 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract-ol.h"
+#include "fractol.h"
 
 static void	my_pixel_put(int x, int y, t_fractol *frac, int color)
 {

@@ -6,11 +6,11 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 15:00:12 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/11 11:25:08 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/11 12:13:14 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract-ol.h"
+#include "fractol.h"
 
 void	fractoltype(t_fractol *frac, t_complex *z, t_complex *c)
 {

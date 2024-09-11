@@ -1,9 +1,9 @@
-NAME = fract-ol
+NAME = fractol
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRCS = fractol.c fractol_utils.c fractol_math.c fractol_events.c
 OBJS = $(SRCS:.c=.o)
-HEADER = fract-ol.h
+HEADER = fractol.h
 
 PRINTF_DIR = includes/ft_printf
 PRINTF = $(PRINTF_DIR)/libftprintf.a
