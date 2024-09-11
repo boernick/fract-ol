@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:50:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/11 12:14:14 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/11 14:43:27 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	main(int argc, char **argv)
 		}
 		fractol_init(&frac);
 		events_init(&frac);
-		render_screen(&frac);		
+		render_screen(&frac);
 		mlx_loop(frac.mlx_ptr);
 		mlx_destroy_window(frac.mlx_ptr, frac.win_ptr);
 		free(frac.mlx_ptr);

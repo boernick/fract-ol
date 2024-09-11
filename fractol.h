@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:12:42 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/11 12:14:14 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/11 14:44:11 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@
 
 #define BLACK             0x000000  // RGB(0, 0, 0)
 #define WHITE             0xFFFFFF  // RGB(255, 255, 255)
-
 #define RES_Y 1000
 #define RES_X 1000
 #define MAX_ITERATIONS 30
 
-typedef struct	s_complex{
+typedef struct s_complex{
 	double	y;
 	double	x;
 }	t_complex;
@@ -67,4 +66,3 @@ int			handle_view(int keycode, t_fractol *frac);
 int			handle_hotspots(int keycode, t_fractol *frac);
 int			events_mouse_press(int button, int x, int y, t_fractol *frac);
 int			close_window(t_fractol *frac);
-

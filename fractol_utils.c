@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 15:00:12 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/11 12:14:13 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/11 14:44:48 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ double	ft_atod(const char *nptr)
 	is_neg = 1;
 	num = 0;
 	factor = 1;
-
 	while ((nptr[i] == 32) || (nptr[i] >= 9 && nptr[i] <= 13))
 		i++;
 	if (nptr[i] == '-' || nptr[i] == '+')
