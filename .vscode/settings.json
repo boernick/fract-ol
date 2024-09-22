@@ -3,6 +3,7 @@
 		"stdlib.h": "c",
 		"unistd.h": "c",
 		"functional": "c",
-		"typeinfo": "c"
+		"typeinfo": "c",
+		"fractol.h": "c"
 	}
 }

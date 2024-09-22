@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:50:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/22 14:42:38 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/22 17:24:00 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ int	main(int argc, char **argv)
 	t_fractol	frac;
 
 	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
-		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
+		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)
+			&& is_double(argv[2]) && is_double(argv[3])))
 	{
 		frac.name = argv[1];
 		ft_printf("Calculating %s...", frac.name);

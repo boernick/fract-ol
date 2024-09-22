@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:12:42 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/11 16:29:53 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/22 17:08:16 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,7 @@ void		fractoltype(t_fractol *frac, t_complex *z, t_complex *c);
 double		check_fractional(const char *nptr, int i, double num, double fac);
 void		render_screen(t_fractol *frac);
 int			events_keyboard(int keycode, t_fractol *frac);
-int			handle_mods(int keycode, t_fractol *frac);
-int			handle_view(int keycode, t_fractol *frac);
-int			handle_hotspots(int keycode, t_fractol *frac);
 int			events_mouse_press(int button, int x, int y, t_fractol *frac);
 int			close_window(t_fractol *frac);
 void		mlx_clean(t_fractol *frac);
+int			is_double(char *str);
