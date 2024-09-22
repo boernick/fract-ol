@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 17:44:50 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/11 16:29:58 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/22 14:20:58 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int	events_mouse_press(int button, int x, int y, t_fractol *frac)
 		frac->julia_x = remap((double)x, -2, 2, RES_X);
 		frac->julia_y = remap((double)y, -2, 2, RES_Y);
 	}
+	else if (button == Button4)
+		frac->zoom *= 0.9; 
+	else if (button == Button5)
+		frac->zoom /= 0.9;
 	render_screen(frac);
 	return (0);
 }
