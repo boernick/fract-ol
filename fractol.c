@@ -6,7 +6,7 @@
 /*   By: nboer <nboer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:50:15 by nboer             #+#    #+#             */
-/*   Updated: 2024/09/11 16:29:52 by nboer            ###   ########.fr       */
+/*   Updated: 2024/09/22 14:42:38 by nboer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	main(int argc, char **argv)
 		mlx_clean(&frac);
 		exit(EXIT_SUCCESS);
 	}
-	ft_printf("Please enter command: \n	- mendelbrot \n	- julia <r> <i>\n");
+	ft_printf("Please enter command: \n	- mandelbrot \n	- julia <r> <i>\n");
 	ft_error();
 	return (0);
 }
